@@ -1,6 +1,7 @@
 package com.bottlerocketstudios.raylong.container
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.hibernate.annotations.BatchSize
 import java.time.Instant
 import java.util.Date
@@ -47,4 +48,6 @@ data class Container(
         val now = Date.from(Instant.now())
         this.modifiedDate = now
     }
+
+    override fun toString(): String = ObjectMapper().writeValueAsString(this)
 }

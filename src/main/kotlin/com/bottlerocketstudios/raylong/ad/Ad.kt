@@ -3,6 +3,7 @@ package com.bottlerocketstudios.raylong.ad
 import com.bottlerocketstudios.raylong.container.BaseDTO
 import com.bottlerocketstudios.raylong.container.ContainerAttributes
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.hibernate.annotations.BatchSize
 import java.time.Instant
 import java.util.*
@@ -71,4 +72,6 @@ data class Ad(
         val now = Date.from(Instant.now())
         this.modifiedDate = now
     }
+
+    override fun toString(): String = ObjectMapper().writeValueAsString(this)
 }
