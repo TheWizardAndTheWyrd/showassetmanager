@@ -1,6 +1,7 @@
 package com.bottlerocketstudios.raylong.asset
 
 //import com.bottlerocketstudios.raylong.AbstractSpringIntegrationTest
+import com.bottlerocketstudios.raylong.AssetAttributes
 import com.bottlerocketstudios.raylong.ShowAssetManager
 import org.assertj.core.api.Assertions.assertThat as assertThat
 import org.junit.Before
@@ -34,7 +35,7 @@ open class AssetRepositoryTest {
                 id = 1L,
                 version = 0L,
                 name = "test asset container",
-                attributes = hashMapOf("key0" to "value0", "key1" to "value1")//,
+                attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name")//,
         )
         val savedContainer = assetRepository.save(container)
         assetRepository.flush()
@@ -50,7 +51,7 @@ open class AssetRepositoryTest {
         assertThat(container?.modifiedDate).isNotNull()
         assertThat(container?.attributes).isNotNull
         assertThat(container?.attributes).isNotEmpty
-        assertThat(container?.attributes).isEqualTo(hashMapOf("key0" to "value0", "key1" to "value1"))
+        assertThat(container?.attributes).isEqualTo(hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name"))
 //        assertThat(container?.images).isNotNull
 //        assertThat(container?.images).isNotEmpty
 //        assertThat(container?.ads).isNotNull

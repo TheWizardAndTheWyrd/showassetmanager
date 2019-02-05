@@ -1,5 +1,6 @@
 package com.bottlerocketstudios.raylong.show
 
+import com.bottlerocketstudios.raylong.AssetAttributes
 import com.bottlerocketstudios.raylong.ShowAssetManager
 import com.bottlerocketstudios.raylong.image.Image
 import org.assertj.core.api.Assertions.assertThat
@@ -38,7 +39,7 @@ open class ShowRepositoryTest {
                 id = 1L,
                 version = 0L,
                 name = "test show container",
-                attributes = hashMapOf("key0" to "value0", "key1" to "value1"),
+                attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name"),
                 images = HashSet()
 //                ads = hashMapOf("ad0" to "{'name': 'ad1', 'uri': '/ads/1}")
         )
@@ -47,12 +48,11 @@ open class ShowRepositoryTest {
                         Image( // TODO: if Image is actually a collection of files, lest rename the type
                             id = 1L,
                             name = "test image container 0 - in show 1",
-                            attributes = hashMapOf("file" to "image0.png", "file" to "image1.png")),
+                            attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name")),
                         Image(
                                 id = 2L,
                                 name = "test image container 1 - in show 1",
-                                attributes = hashMapOf("file" to "logo.png", "file" to "favicon.ico")
-                        )))
+                                attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name"))))
         log.info("Built container: {}", container)
 
         val savedContainer = showService.save(container)
@@ -71,7 +71,7 @@ open class ShowRepositoryTest {
         assertThat(container?.modifiedDate).isNotNull()
         assertThat(container?.attributes).isNotNull
         assertThat(container?.attributes).isNotEmpty
-        assertThat(container?.attributes).isEqualTo(hashMapOf("key0" to "value0", "key1" to "value1"))
+        assertThat(container?.attributes).isEqualTo(hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name"))
         assertThat(container?.images).isNotNull
         assertThat(container?.images).isNotEmpty
 //        assertThat(container?.ads).isNotNull

@@ -1,3 +1,5 @@
 package com.bottlerocketstudios.raylong.container
 
-typealias ContainerAttributes = Map<String, String>?
+import com.bottlerocketstudios.raylong.AssetAttributes
+
+typealias ContainerAttributes = Map<AssetAttributes, String>?

@@ -1,5 +1,6 @@
 package com.bottlerocketstudios.raylong.container
 
+import com.bottlerocketstudios.raylong.AssetAttributes
 import com.bottlerocketstudios.raylong.ShowAssetManager
 import org.assertj.core.api.Assertions.assertThat as assertThat
 import org.junit.Before
@@ -33,7 +34,7 @@ class ContainerRepositoryTest {
                 id = 1L,
                 version = 0L,
                 name = "test container",
-                attributes = hashMapOf("key0" to "value0", "key1" to "value1")
+                attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name")//,
         )
         val savedContainer = containerRepository.save(container)
         containerRepository.flush()
@@ -49,7 +50,7 @@ class ContainerRepositoryTest {
         assertThat(container?.modifiedDate).isNotNull()
         assertThat(container?.attributes).isNotNull
         assertThat(container?.attributes).isNotEmpty
-        assertThat(container?.attributes).isEqualTo(hashMapOf("key0" to "value0", "key1" to "value1"))
+        assertThat(container?.attributes).isEqualTo(hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name"))
 
         log.info("Retrieved container from repo: {}", container)
     }

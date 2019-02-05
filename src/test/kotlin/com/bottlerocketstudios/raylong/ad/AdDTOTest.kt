@@ -1,5 +1,6 @@
 package com.bottlerocketstudios.raylong.ad
 
+import com.bottlerocketstudios.raylong.AssetAttributes
 import com.bottlerocketstudios.raylong.asset.Asset
 import org.assertj.core.api.Assertions
 import org.junit.Before
@@ -20,15 +21,15 @@ class AdDTOTest {
                 ad = Ad(
                         id = 1L,
                         name = "test ad container 0",
-                        attributes = hashMapOf("key0" to "value0", "key1" to "value1")//,
+                        attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name")//,
                 ),
                 assets = ConcurrentSkipListSet(),
-                metadata = hashMapOf("metaKey0" to "metaValue0", "metaKey1" to "metaValue1")
+                metadata = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name")//,
         )
         adDTO.assets.add(Asset(
                 id = 1L,
                 name = "test asset 0",
-                attributes = hashMapOf("key0" to "value0", "key1" to "value1")//,
+                attributes = hashMapOf(AssetAttributes.ID to "1", AssetAttributes.NAME to "test name")//,
         ))
     }
 
