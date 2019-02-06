@@ -2,6 +2,26 @@
 Let's explore the requirements of the Bottle Rocket Studios test.
 Then, let's implement them at scale. =)
 
+## State of the Implementation
+Here's where we're at:
+
+  * Almost everything has test coverage.
+  * The data layer and the service layers are the most complex.
+  * We have a very flexible schema that uses enterprise style key-value pairs.
+  * `ContainerService::saveDTO` has a preliminary implementation.
+  * `ShowServive::save` has a preliminary implementation.
+  * REST/JSON controllers don't exist, but a standard implementation just wraps a service object.
+  * I focused my time on modeling an enterprise scalable data structure and schema that is easy
+  to marshal/unmarshal.
+  * Each component has its own logical package: ad, image, show, etc.
+  * Only using `H2` for testing, so this needs permanent storage.
+  * Since each logical package would have its own controllers, we can easily use this repo to deploy
+  multiple micro-services, if desired, from the same repo.  How?  Simple: each controller would
+  have its own profile annotation.  Then, our CI/CD pipeline just deploys the repo to each deployment
+  via profile tags, etc.
+  * This needs a `Jenkinsfile`
+  * Kotlin can be a bit strange... if the tests fail, just re-run them to pass.
+
 ## Requirements
 The design:
 
