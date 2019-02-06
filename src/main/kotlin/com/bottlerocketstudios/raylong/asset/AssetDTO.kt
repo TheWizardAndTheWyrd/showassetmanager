@@ -1,28 +1,27 @@
-package com.bottlerocketstudios.raylong.ad
+package com.bottlerocketstudios.raylong.asset
 
-import com.bottlerocketstudios.raylong.asset.Asset
 import com.bottlerocketstudios.raylong.container.BaseDTO
 import com.bottlerocketstudios.raylong.container.ContainerAttributes
 import com.fasterxml.jackson.databind.ObjectMapper
 import java.util.concurrent.ConcurrentSkipListSet
 
-data class AdDTO(
-        val ad: Ad,
+data class AssetDTO(
+        val asset: Asset,
         val assets: ConcurrentSkipListSet<Asset>,
         val metadata: ContainerAttributes
-) : Comparable<AdDTO>, BaseDTO() {
-    override fun compareTo(other: AdDTO): Int {
-        this.ad.id?.let {
+) : Comparable<AssetDTO>, BaseDTO() {
+    override fun compareTo(other: AssetDTO): Int {
+        this.asset.id?.let {
 
-            other.ad.id?.let {
+            other.asset.id?.let {
                 return when {
-                    this.ad.id == other.ad.id -> {
+                    this.asset.id == other.asset.id -> {
                         0
                     }
-                    this.ad.id!! > other.ad.id!! -> {
+                    this.asset.id!! > other.asset.id!! -> {
                         1
                     }
-                    this.ad.id!! < other.ad.id!! -> {
+                    this.asset.id!! < other.asset.id!! -> {
                         -1
                     }
                     else -> {
@@ -34,7 +33,6 @@ data class AdDTO(
 
         return 0
     }
-
 
     override fun toString(): String = ObjectMapper().writeValueAsString(this)
 }

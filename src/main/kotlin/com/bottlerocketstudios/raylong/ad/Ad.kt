@@ -22,6 +22,8 @@ data class Ad(
 
         var name: String? = null,
 
+        var description: String? = null,
+
         @ElementCollection(fetch = FetchType.EAGER)
         @CollectionTable(name = "ad_attributes")
         @MapKeyJoinColumn(name = "attribute_key")

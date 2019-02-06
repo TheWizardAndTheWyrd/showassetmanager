@@ -23,11 +23,13 @@ data class Video(
         var name: String? = null,
 
         @ElementCollection(fetch = FetchType.EAGER)
-        @CollectionTable(name = "raw_video_attributes")
+        @CollectionTable(name = "video_attributes")
         @MapKeyJoinColumn(name = "attribute_key")
         @Column(name = "attribute_value")
         @BatchSize(size = 20)
         var attributes: ContainerAttributes = null,
+
+        var type: VideoAttributes? = null,
 
         @Column(name = "created_date")
         var createdDate: Date? = null,
